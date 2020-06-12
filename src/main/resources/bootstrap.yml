@@ -1,0 +1,23 @@
+server:
+  port: 9993
+spring:
+  application:
+    name: ltzIndex
+  cloud:
+    config:
+      enabled: true
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: LTZCONFIG
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 192.168.50.221
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    registerWithEureka: true #服务注册开关
+    fetchRegistry: true #服务发现开关
+    service-url:
+      defaultZone: http://liaotianzheng.com:9998/eureka/
